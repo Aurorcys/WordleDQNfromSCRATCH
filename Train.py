@@ -47,10 +47,10 @@ import random
 
 
 # Load both
-with open('valid_guesses.csv', 'r') as f:
+with open('data/valid_guesses.csv', 'r') as f:
     valid_words = [line.strip() for line in f.readlines() if len(line.strip()) == 5 and line.strip().isalpha()]
 
-with open('valid_solutions.csv', 'r') as f:
+with open('data/valid_solutions.csv', 'r') as f:
     answers = [line.strip() for line in f.readlines() if len(line.strip()) == 5 and line.strip().isalpha()]
 
 # Combine — all words in one vocabulary
@@ -111,7 +111,7 @@ for episode in range(episodes):
         model.backward(target, word_to_idx[guess])
 
 
-    epsilon = max(0.1, epsilon * 0.9999)  
+    epsilon = max(0.05, epsilon * 0.99995)
 
     if episode % 100 == 0:
         print(f"Episode {episode}, epsilon={epsilon:.3f}, last game guesses={len(episode_steps)}")

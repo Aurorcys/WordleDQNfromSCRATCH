@@ -14,7 +14,7 @@ class NN:
         self.W3 = np.random.randn(256, n_words) * np.sqrt(2.0 / 256)
         self.b3 = np.zeros(n_words)
 
-        self.df = pd.read_csv('valid_guesses.csv')
+        
         self.word_to_idx = {word: i for i, word in enumerate(all_words)}
         self.n_words = n_words
 
